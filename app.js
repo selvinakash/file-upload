@@ -12,7 +12,7 @@ var storage =   multer.diskStorage({
 var upload = multer({ storage : storage}).single('myfile');  
   
 app.get('/',function(req,res){  
-      res.sendFile(__dirname + "/Signup.html");  
+      res.sendFile(__dirname + "/index.html");  
 });  
   
 app.post('/uploadjavatpoint',function(req,res){  
