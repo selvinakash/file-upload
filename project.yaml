@@ -19,7 +19,7 @@
 
     - name: Install packages based on package.json using the npm
       npm:
-        path: "/home/ubuntu"
+        path: "/home/ubuntu/file-upload"
         state: present
     - name: Install pm2
       npm:
@@ -28,13 +28,9 @@
     - name: Delete old pm2 process
       command: pm2 delete ws-node
       ignore_errors: yes
-    - name: Git checkout
-      ansible.builtin.git:
-        repo: 'https://github.com/selvinakash/file-upload.git'
-        dest: /home/ubuntu
     - name: Creates directory
       file:
-        path: /home/ubuntu/uploads
+        path: /home/ubuntu/file-upload/uploads
         state: directory
     - name: Start pm2
-      command: pm2 start /home/ubuntu/app.js --watch
+      command: pm2 start /home/ubuntu/file-upload/app.js --watch
