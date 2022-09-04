@@ -1,0 +1,32 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: yes
+  become: yes
+  vars:
+    NODEJS_VERSION: "16.9.0"
+  tasks:
+    - name: Run the equivalent of "apt-get update" as a separate step
+      apt:
+        update_cache: yes
+    - name: Ansible shell module multiple commands
+      shell: 'curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
+    - name: Install reqired packages
+      apt: name={{ item }} state=present
+      with_items:
+        - curl
+        - nodejs
+    - name: Install packages based on package.json using the npm
+      npm:
+        path: "/home/ubuntu/file-upload"
+        state: present
+    - name: Install pm2
+      npm:
+        name: pm2
+        global: yes
+    - name: Delete old pm2 process
+      command: pm2 delete ws-node
+      ignore_errors: yes
+
+    - name: Start pm2
+      command: pm2 start /home/ubuntu/file-upload/app.js --watch
