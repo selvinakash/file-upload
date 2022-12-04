@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.filepath;
-      var newpath = 'E:/AWS_2/file_upload_new/fileupload/' + files.filetoupload.originalFilename;
+      var newpath = './uploads' + files.filetoupload.originalFilename;
       fs.readFile(oldpath, function (err, files) {
         if (err) throw err;
         console.log('File read!');
