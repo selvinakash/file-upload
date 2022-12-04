@@ -4,7 +4,7 @@
   gather_facts: yes
   become: yes
   vars:
-    NODEJS_VERSION: "16.9.0"
+    NODEJS_VERSION: "12.22.9"
   tasks:
     - name: Run the equivalent of "apt-get update" as a separate step
       apt:
