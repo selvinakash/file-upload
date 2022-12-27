@@ -1,36 +1,27 @@
-<html>  
-  <head>  
-    <title>File upload in Node.js by Javatpoint</title>  
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>  
-  <script>  
-  $(document).ready(function() {  
-     $('#uploadForm').submit(function() {  
-         $("#status").empty().text("File is uploading...");  
-  
-        $(this).ajaxSubmit({  
-  
-            error: function(xhr) {  
-                    status('Error: ' + xhr.status);  
-            },  
-  
-            success: function(response) {  
-                    console.log(response)  
-                    $("#status").empty().text(response);  
-            }  
-    });  
-  
-    return false;  
-    });      
-});  
-  </script>  
-  </head>  
-  <body>  
-      <h1>HEY user! Upload your files here...</h1>  
-      <form id="uploadForm" enctype="multipart/form-data" action="/uploadjavatpoint" method="post">  
-       <input type="file" name="myfile" /><br/><br/>  
-       <input type="submit" value="Upload Image" name="submit"><br/><br/>  
-       <span id="status"></span>  
-      </form>  
-  </body>  
-</html>  
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    <meta charset="utf-8">s
+    <meta name="viewport" content="width=device.width initial-scale=1.0">
+    .wrapper{
+        width = 100%;
+    }
+    .center-block {
+  margin: auto;
+  display: block;
+  height:200px;
+    font-size:24pt;
+}
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+</style>
+</head>
+<body>
+<form action="upload" method="post" enctype="multipart/form-data">
+<input class="center-block" type="file" name="fileToUpload"><br>
+<input class="center-block" type="submit">
+</form>
+</body>
+</html>
