@@ -8,7 +8,7 @@ app.use(busboy({
     highWaterMark: 2 * 1024 * 1024, // Set 2MiB buffer
 })); // Insert the busboy middle-ware
  
-const uploadPath = path.join(__dirname, './uploads/'); // Register the upload path
+const uploadPath = path.join(__dirname, './fileupload/'); // Register the upload path
 fs.ensureDir(uploadPath); // Make sure that he upload path exits
  
  
@@ -40,11 +40,12 @@ app.route('/upload').post((req, res, next) => {
  * Serve the basic index.html with upload form
  */
 app.route('/').get((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('<form action="upload" method="post" enctype="multipart/form-data">');
-    res.write('<input type="file" name="fileToUpload"><br>');
-    res.write('<input type="submit">');
-    res.write('</form>');
+    // res.writeHead(200, {'Content-Type': 'text/html'});
+    // res.write('<form action="upload" method="post" enctype="multipart/form-data">');
+    // res.write('<input type="file" name="fileToUpload"><br>');
+    // res.write('<input type="submit">');
+    // res.write('</form>');
+    res.sendFile(path.join(__dirname+'/index.html'));
     return res.end();
 });
  
